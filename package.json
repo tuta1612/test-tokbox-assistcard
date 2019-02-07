@@ -2,10 +2,9 @@
   "name": "testtokboxserver",
   "version": "0.0.1",
   "description": "proyecto de prueba para tokbox",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -22,7 +21,6 @@
   "homepage": "https://github.com/tuta1612/test-tokbox-assistcard#readme",
   "dependencies": {
     "express": "^4.16.4",
-    "mongoose": "^5.4.10",
     "opentok": "^2.8.0"
   },
   "devDependencies": {
