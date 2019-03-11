@@ -15,7 +15,8 @@ app.get('/', function (req, res) {
 });
 app.get('/comenzar', function (req, res) {
     if(sesionDeTokBox.length==0){
-        opentok.createSession(function(err, session){
+        var sessionOptions = {mediaMode:"routed", archiveMode: "always"};
+        opentok.createSession(sessionOptions, function(err, session){
             if(err){
                 res.send("no se pudo crear la sesion");
             }else{
@@ -26,6 +27,11 @@ app.get('/comenzar', function (req, res) {
     } else {
         res.send(sesionDeTokBox);
     }
+});
+
+app.get('/finalizar', function (req, res) {
+    sesionDeTokBox = "";
+    res.send("se finalizo la sesion de chat");
 });
 
 app.get('/token', function (req, res) {
