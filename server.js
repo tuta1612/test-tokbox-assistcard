@@ -51,7 +51,7 @@ app.get('/faqs',  function(req, res){
 app.get('/waitingroom', function (req, res) {
     var oneDate = new Date();
     var percent = oneDate.getSeconds() + 20;
-    var json = '{"beforeyou":4, "percent": ${percent}}';
+    var json = '{"beforeyou":4, "percent": '+percent+'}';
     res.send(json);
 });
   
