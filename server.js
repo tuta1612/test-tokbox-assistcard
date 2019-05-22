@@ -49,7 +49,7 @@ app.get('/faqs',  function(req, res){
 });
 
 app.get('/tips',  function(req, res){
-    var json = '{"faqs":[{"pregunta":"¿Qué es Telemed?", "respuesta":"No se pero suena como un canal nuevo de tele."},{"pregunta":"¿Qué beneficios tiene la Telemedicina?", "respuesta":"Que podes mirar la tele y hay un medico adentro"},{"pregunta":"Si el caso es de mayor gravedad ¿el médico me atenderá igual?", "respuesta":"No, cagate por curioso, solo curamos gente sana."},{"pregunta":"¿Cuánto me cuesta obtener este Upgrade?", "respuesta":"Vas a tener que pagar con tu sangre."},{"pregunta":"¿Puedo obtener una receta médica?", "respuesta":"Te buscas un amigo medico que te de el papelito."},{"pregunta":"¿Las consultas quedan guardadas?", "respuesta":"Vos fumá, aca guardamos todo."},{"pregunta":"¿Desde qué edad se puede acceder a este servicio?", "respuesta":"Con que seas menor q Mirta Legrand es suficiente."}]}';
+    var json = '{"tips":[{"pregunta":"¿Qué es Telemed?", "respuesta":"No se pero suena como un canal nuevo de tele."},{"pregunta":"¿Qué beneficios tiene la Telemedicina?", "respuesta":"Que podes mirar la tele y hay un medico adentro"},{"pregunta":"Si el caso es de mayor gravedad ¿el médico me atenderá igual?", "respuesta":"No, cagate por curioso, solo curamos gente sana."},{"pregunta":"¿Cuánto me cuesta obtener este Upgrade?", "respuesta":"Vas a tener que pagar con tu sangre."},{"pregunta":"¿Puedo obtener una receta médica?", "respuesta":"Te buscas un amigo medico que te de el papelito."},{"pregunta":"¿Las consultas quedan guardadas?", "respuesta":"Vos fumá, aca guardamos todo."},{"pregunta":"¿Desde qué edad se puede acceder a este servicio?", "respuesta":"Con que seas menor q Mirta Legrand es suficiente."}]}';
     res.send(json);
 });
 
