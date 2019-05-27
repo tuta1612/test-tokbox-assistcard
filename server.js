@@ -109,3 +109,14 @@ app.post('/Api/Tokbox/GetTokboxSessionId',function (req, res) {
         res.send(json);
     }
 });
+
+app.post('/Api/Tokbox/GetTokboxToken',function (req, res) {
+    if(sesionesDeTokbox[req.body.Parameters.TurnToken] == undefined){
+        var json = '{"ResponseScalar": null,"ApplicationName": null,"StatusCode": 500,"ApplicationStatusCodeSource": null,"StatusCodeParameters": null,"ApplicationEventTableName": null,"ErrorId": 0,"Message": "no hay una sesion de tokbox para ese turno"}';
+        res.send(json);
+    } else {
+        var token = opentok.generateToken(sesionesDeTokbox[req.body.Parameters.TurnToken]);
+        var json = '{"ResponseScalar": "' + token + '","ApplicationName": null,"StatusCode": 200,"ApplicationStatusCodeSource": null,"StatusCodeParameters": null,"ApplicationEventTableName": null,"ErrorId": 0,"Message": null}';
+        res.send(json);
+    }
+});
