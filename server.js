@@ -62,21 +62,6 @@ app.get('/tips',  function(req, res){
     res.send(json);
 });
 
-app.get('/waitingroom', function (req, res) {
-    var delay = req.query.delay;
-    if(delay===null || delay === undefined){
-        delay = 1;
-    }
-    var oneDate = new Date();
-    var percent = oneDate.getSeconds() + 20;
-    var before = oneDate.getSeconds() % 6;
-    var json = '{"beforeyou":'+before+', "percent": '+percent+', "delay": '+delay+'}';
-
-    setTimeout((function() {
-        res.send(json)
-    }), delay*1000);
-});
-
 var salaDeEspera = {};
 
 app.post('/Api/Turn/CheckStatus',function (req, res) {
