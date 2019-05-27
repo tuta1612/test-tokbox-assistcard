@@ -5,8 +5,17 @@ var OpenTok = require('opentok'),
 opentok = new OpenTok(apiKey, apiSecret);
 
 
-var express = require('express');
-var app = express();
+const express = require('express');
+const bodyParser = require('body-parser');
+const app = express();
+
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.listen(process.env.PORT || 5000, function () {
+    console.log('Example app listening on port:'+process.env.PORT || 5000);
+});
 
 var sesionDeTokBox = "";
 
@@ -73,8 +82,4 @@ app.post('/Api/Turn/CheckStatus',function (req, res) {
     var rta = {"req": req, "req.body": req.body};
     var json = JSON.stringify(rta);
     res.send(json);
-});
-  
-app.listen(process.env.PORT || 5000, function () {
-    console.log('Example app listening on port:'+process.env.PORT || 5000);
 });
