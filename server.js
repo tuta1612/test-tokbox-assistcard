@@ -67,6 +67,12 @@ app.get('/waitingroom', function (req, res) {
         res.send(json)
     }), delay*1000);
 });
+
+app.post('/Api/Turn/CheckStatus',function (req, res) {
+    //var json = '{"ResponseEntity": {"QtyPatientsBefore": 2,"ElapsedPercentual": 33,"TakenByMedicalSpecialist": false,"SuggestedSecondsToRetry": 30},"ApplicationName": null,"StatusCode": 200,"ApplicationStatusCodeSource": null,"StatusCodeParameters": null,"ApplicationEventTableName": null,"ErrorId": 0,"Message": null}';    
+    var json = JSON.stringify(req.body);
+    res.send(json);
+});
   
 app.listen(process.env.PORT || 5000, function () {
     console.log('Example app listening on port:'+process.env.PORT || 5000);
