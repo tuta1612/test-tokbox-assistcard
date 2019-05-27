@@ -77,9 +77,23 @@ app.get('/waitingroom', function (req, res) {
     }), delay*1000);
 });
 
+var salaDeEspera = {};
+
 app.post('/Api/Turn/CheckStatus',function (req, res) {
-    //var json = '{"ResponseEntity": {"QtyPatientsBefore": 2,"ElapsedPercentual": 33,"TakenByMedicalSpecialist": false,"SuggestedSecondsToRetry": 30},"ApplicationName": null,"StatusCode": 200,"ApplicationStatusCodeSource": null,"StatusCodeParameters": null,"ApplicationEventTableName": null,"ErrorId": 0,"Message": null}';    
+    if(salaDeEspera[req.body.Parameters.TurnToken] == undefined){
+        var turno = {"QtyPatientsBefore": 10, 
+                    "ElapsedPercentual": 0,
+                    "TakenByMedicalSpecialist": false,
+                    "SuggestedSecondsToRetry": 10};
+        salaDeEspera[req.body.Parameters.TurnToken] = turno;
+    }
+
+    var rta = JSON.stringify(salaDeEspera[req.body.Parameters.TurnToken]);
+    var json = '{"ResponseEntity": ' + rta + ',"ApplicationName": null,"StatusCode": 200,"ApplicationStatusCodeSource": null,"StatusCodeParameters": null,"ApplicationEventTableName": null,"ErrorId": 0,"Message": null}';    
+
+
+    /*var json = '{"ResponseEntity": {"QtyPatientsBefore": 2,"ElapsedPercentual": 33,"TakenByMedicalSpecialist": false,"SuggestedSecondsToRetry": 30},"ApplicationName": null,"StatusCode": 200,"ApplicationStatusCodeSource": null,"StatusCodeParameters": null,"ApplicationEventTableName": null,"ErrorId": 0,"Message": null}';    
     var rta = {"rta": "rta", "req.body": req.body};
-    var json = JSON.stringify(rta);
+    var json = JSON.stringify(rta);*/
     res.send(json);
 });
