@@ -86,3 +86,26 @@ app.post('/Api/Turn/CheckStatus',function (req, res) {
     var json = '{"ResponseEntity": ' + rta + ',"ApplicationName": null,"StatusCode": 200,"ApplicationStatusCodeSource": null,"StatusCodeParameters": null,"ApplicationEventTableName": null,"ErrorId": 0,"Message": null}';
     res.send(json);
 });
+
+var sesionesDeTokbox = {};
+
+app.post('/Api/Tokbox/GetTokboxSessionId',function (req, res) {
+    var rta = "000"
+    if(sesionesDeTokbox[req.body.Parameters.TurnToken] == undefined){
+        var sessionOptions = {mediaMode:"routed", archiveMode: "always"};
+        opentok.createSession(sessionOptions, function(err, session){
+            if(err){
+                var json = '{"ResponseScalar": "aaa","ApplicationName": null,"StatusCode": 500,"ApplicationStatusCodeSource": null,"StatusCodeParameters": null,"ApplicationEventTableName": null,"ErrorId": 0,"Message": "no se pudo crear la sesion"}';
+                res.send(json);
+            }else{
+                sesionesDeTokbox[req.body.Parameters.TurnToken] = session.sessionId;
+                var json = '{"ResponseScalar": "' + session.sessionId + '","ApplicationName": null,"StatusCode": 200,"ApplicationStatusCodeSource": null,"StatusCodeParameters": null,"ApplicationEventTableName": null,"ErrorId": 0,"Message": null}';
+                res.send(json);
+            }
+        });
+    } else {
+        var rta = sesionesDeTokbox[req.body.Parameters.TurnToken];
+        var json = '{"ResponseScalar": "' + rta + '","ApplicationName": null,"StatusCode": 200,"ApplicationStatusCodeSource": null,"StatusCodeParameters": null,"ApplicationEventTableName": null,"ErrorId": 0,"Message": null}';
+        res.send(json);
+    }
+});
