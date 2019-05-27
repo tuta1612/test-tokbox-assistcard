@@ -81,5 +81,5 @@ app.post('/Api/Turn/CheckStatus',function (req, res) {
     //var json = '{"ResponseEntity": {"QtyPatientsBefore": 2,"ElapsedPercentual": 33,"TakenByMedicalSpecialist": false,"SuggestedSecondsToRetry": 30},"ApplicationName": null,"StatusCode": 200,"ApplicationStatusCodeSource": null,"StatusCodeParameters": null,"ApplicationEventTableName": null,"ErrorId": 0,"Message": null}';    
     var rta = {"rta": "rta", "req.body": req.body};
     var json = JSON.stringify(rta);
-    res.send();
+    res.send(json);
 });
