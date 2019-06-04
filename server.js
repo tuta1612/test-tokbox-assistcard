@@ -120,3 +120,8 @@ app.post('/Api/Tokbox/GetTokboxToken',function (req, res) {
         res.send(json);
     }
 });
+
+app.post('/Api/User/Get',function (req, res) {
+    var json = '{"ResponseEntity": {"Id": 11,"Name": "AlguienUPD","LastName": "ApellidoUPD","DocumentType": "DNI","DocumentNumber": "29654972UPD","Email": "alguien@mail.comUPD","CurrentUICulture": "en-US"},"ApplicationName": null,"StatusCode": 200,"ApplicationStatusCodeSource": null,"StatusCodeParameters": null,"ApplicationEventTableName": null,"ErrorId": 0,"Message": null}';
+    res.send(json);
+});
