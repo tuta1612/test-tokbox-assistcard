@@ -62,6 +62,11 @@ app.get('/tips',  function(req, res){
     res.send(json);
 });
 
+app.get('/telefonos',  function(req, res){
+    var json = '{"fecha":"2019-07-16", "oficinas":[{"nombre":"Buenos Aires", "telefono":"+541144445555"},{"nombre":"Cordoba", "telefono":"+541133335555"},{"nombre":"Santa Fe", "telefono":"+541144448888"},{"nombre":"Tucuman", "telefono":"+541122226666"},{"nombre":"Rio Negro", "telefono":"+541100001111"}]}';
+    res.send(json);
+});
+
 var salaDeEspera = {};
 
 app.post('/Api/Turn/CheckStatus',function (req, res) {
