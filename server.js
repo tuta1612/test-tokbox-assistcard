@@ -19,6 +19,7 @@ app.listen(process.env.PORT || 5000, function () {
 
 var sesionDeTokBox = "";
 
+//https://test-tokbox-assistcard.herokuapp.com/
 app.get('/', function (req, res) {
     res.send('Hello World!');
 });
@@ -131,5 +132,24 @@ app.post('/Api/Tokbox/GetTokboxToken',function (req, res) {
 
 app.post('/Api/User/Get',function (req, res) {
     var json = '{"ResponseEntity": {"Id": 11,"Name": "AlguienUPD","LastName": "ApellidoUPD","DocumentType": "DNI","DocumentNumber": "29654972UPD","Email": "alguien@mail.comUPD","CurrentUICulture": "en-US"},"ApplicationName": null,"StatusCode": 200,"ApplicationStatusCodeSource": null,"StatusCodeParameters": null,"ApplicationEventTableName": null,"ErrorId": 0,"Message": null}';
+    res.send(json);
+});
+
+
+app.get('/texts',  function(req, res){
+    var json = '{"textoSaludo1":{"textDefault":"Hello", "textES": "Hola", "textPT": "Olá"}, "otroTexto":{"textDefault":"Good morning", "textES": "Buenos días", "textPT": "bom Dia"}}';
+    res.header("Access-Control-Allow-Origin", "*");
+    res.send(json);
+});
+
+app.get('/images',  function(req, res){
+    var json = '{"fotoPerrito1":{"urlLow":"https://img.milanuncios.com/fg/3112/32/311232101_1.jpg?VersionId=F32dxzysNir0DmygO48.pJ_c46I4xkur","urlMid":"https://img.milanuncios.com/fg/3112/32/311232101_1.jpg?VersionId=F32dxzysNir0DmygO48.pJ_c46I4xkur","urlHigh":"https://img.milanuncios.com/fg/3112/32/311232101_1.jpg?VersionId=F32dxzysNir0DmygO48.pJ_c46I4xkur","background":"#9EE1FE","scaleType":"fit"},"fotoPerro2":{"urlLow":"https://www.hola.com/imagenes/estar-bien/20190820147813/razas-perros-pequenos-parecen-grandes/0-711-550/razas-perro-pequenos-grandes-a.jpg","urlMid":"https://www.hola.com/imagenes/estar-bien/20190820147813/razas-perros-pequenos-parecen-grandes/0-711-550/razas-perro-pequenos-grandes-a.jpg","urlHigh":"https://www.hola.com/imagenes/estar-bien/20190820147813/razas-perros-pequenos-parecen-grandes/0-711-550/razas-perro-pequenos-grandes-a.jpg","background":"#FF0000","scaleType":"center"}}';
+    res.header("Access-Control-Allow-Origin", "*");
+    res.send(json);
+});
+
+app.get('/appconfiguration',  function(req, res){
+    var json = '{"mainScreen": {"background":"#FF00FF", "items":[{"view":"label","textkey":"textoSaludo1"},{"view":"input","textkey":"textoSaludo1","placeholder":"otroTexto"},{"view":"button","textkey":"textoSaludo1"}]}, "otherScreen":{"background":"#00FFFF", "items":[{"view":"label","textkey":"otroTexto"},{"view":"button","textkey":"textoSaludo1"}]}}';
+    res.header("Access-Control-Allow-Origin", "*");
     res.send(json);
 });
